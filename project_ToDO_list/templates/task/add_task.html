@@ -1,0 +1,24 @@
+{% extends 'layouts\master.html' %}
+{% block title%}
+TaskS | Add
+{% endblock %}
+
+{%block content%}
+<div class ="container">
+  <div class = "card p-5 mt-3">
+    <a href="{% url 'show-task' %}" class="btn btn-sm btn-primary mb-3 mt-3">Back</a>
+      {% if title %}
+          <h1> {{ title }} </h1>
+          <hr>
+      {% else %}
+          <h1> This adds the body content of add page </h1>
+          <hr>
+      {% endif %}
+      <form action="{% url 'show-task' %}" method="post">
+          {% csrf_token %}
+          {{info_create_form.as_p }}
+          <input type="submit" class="btn btn-sm btn-primary" value="Add New Task">
+       </form>
+   </div>
+</div>
+{% endblock %}
