@@ -3,10 +3,10 @@ from .models import Detail,Info
 
 class DetailForm(forms.ModelForm):
     class Meta:
-        fields =("__all__")
+        fields =("task_priority","task_code")
         model=Detail
 
 class InfoForm(forms.ModelForm):
     class Meta:
-        fields = ("__all__")
+        fields = ("task_name","priority","task_deadline")
         model=Info

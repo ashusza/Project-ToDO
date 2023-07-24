@@ -1,6 +1,6 @@
 {% extends 'layouts\master.html' %}
 {% block title%}
-TaskS | Show
+TaskS | List
 {% endblock %}
 
 {%block content%}
@@ -27,8 +27,6 @@ TaskS | Show
                   <tr>
                     <th scope="col" class="text-center">No.</th>
                     <th scope="col" class="text-center">Task_List</th>
-                    <th scope="col" class="text-center">Task_Deadline</th>
-                    <th scope="col" class="text-center">Task_Priority</th>
                     <th scope="col" class="text-center"  colspan="3">Action</th>
                   </tr>
                 </thead>
@@ -37,17 +35,12 @@ TaskS | Show
                   <tr>
                     <td class="text-center">{{forloop.counter }}</td>
                     <td class="text-center">{{val.task_name }}</td>
-                    <td class="text-center">{{val.task_deadline}}</td>
-                    <td class="text-center">{{val.priority}} </td>
-                    
                     <td>
-                      <a href="{% url 'task-completed' %}">     <button type="submit" class="btn btn-warning ms-1">Show </button></a>
+                      <a href="{% url 'task-completed' %}">     <button type="submit" class="btn btn-warning ms-1">Active</button></a>
                          </td>
                     <td>
-                 <a href="{% url 'task-edit' val.id %}">     <button type="submit" class="btn btn-secondary"> Edit </button></a>
-                    </td>
-                    <td> 
-                      <a href="{% url 'task-delete' val.id %}"><button type="submit" class="btn btn-danger"> Delete </button></a>
+                      <a href="{% url 'task-completed' %}">     <button type="submit" class="btn btn-success ms-1">Complete</button></a>
+                         </td>
                   </tr>
                   {% endfor %}
                 </tbody>

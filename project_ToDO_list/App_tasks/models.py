@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Detail(models.Model):
@@ -14,12 +15,12 @@ class Detail(models.Model):
 class Info(models.Model):
     task_name=models.CharField(max_length=100)
     task_create_at=models.DateField(auto_now_add=True)
-    task_priority=models.ForeignKey(Detail,on_delete=models.CASCADE,null=True)
-    task_deadline=models.TimeField()
+    priority=models.ForeignKey(Detail,on_delete=models.CASCADE,null=True)
+    task_deadline=models.DateTimeField(default=timezone.now)
     is_active=models.BooleanField(default=True)
 
     def __str__(self):
-        return self.task_name+" - "+self.task_priority.task_code
+        return self.task_name
     
     class Meta:
         db_table='Info'

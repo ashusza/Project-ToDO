@@ -1,0 +1,34 @@
+{% extends 'layouts\master.html' %}
+{% block title%}
+TaskS | done
+{% endblock %}
+
+{%block content%}
+<div class="container">
+    <div class="card p-5 mt-3">
+        <h1><b>Update task</b></h1>
+        <hr>
+        <form action="{% url 'task-edit' data.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mb-2">
+                <label for="task_name">Task_Name</label>
+                <input type="text" name="task_name" class="form-control mt-2" value="{{ data.task_name }}">
+            </div>
+            <div class="form-group mb-2">
+                <label for="task_deadline">Task_Deadline</label>
+                <input type="text" name="task_deadline" class="form-control mt-2" value="{{ data.task_deadline }}">
+            </div>
+            <div class="form-group mb-2">
+                <select name="priority" class="form-control mt-2">
+                    <option value="0">Select Your task Priority</option>
+                    {% for val in details %}
+                    <option value="{{ val.id }}" class="form-control">{{ val.priority }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="submit" value="Update" class="btn btn-primary btn-sm">
+            <a href="{% url 'task-show' %}" class="btn btn-sm btn-dark btn-lg " style="float:right">Back</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
